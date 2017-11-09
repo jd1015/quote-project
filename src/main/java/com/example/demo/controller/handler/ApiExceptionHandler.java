@@ -23,6 +23,11 @@ public class ApiExceptionHandler {
 
   private static final Logger logger = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
+  /**
+   * Exception handling method.
+   * @param ex
+   * @return
+   */
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   @ExceptionHandler({ Exception.class})
   @ResponseBody
