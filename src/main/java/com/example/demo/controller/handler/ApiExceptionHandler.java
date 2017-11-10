@@ -6,6 +6,7 @@ package com.example.demo.controller.handler;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.mybatis.spring.MyBatisSystemException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -24,14 +25,14 @@ public class ApiExceptionHandler {
   private static final Logger logger = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
   /**
-   * Exception handling method.
+   * MyBatisSystemException handling method.
    * @param ex
    * @return
    */
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  @ExceptionHandler({ Exception.class})
+  @ExceptionHandler({ MyBatisSystemException.class})
   @ResponseBody
-  public Map<String, String> handleException(Exception ex) {
+  public Map<String, String> handleMyBatisSystemException(MyBatisSystemException ex) {
     logger.info("Called handleExceptionError is start.");
     Map<String, String> errorMap = new HashMap<String, String>();
     errorMap.put("message", "エラーが発生しました。");
