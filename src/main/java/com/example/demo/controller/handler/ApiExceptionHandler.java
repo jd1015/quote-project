@@ -33,11 +33,11 @@ public class ApiExceptionHandler {
   @ExceptionHandler({ MyBatisSystemException.class})
   @ResponseBody
   public Map<String, String> handleMyBatisSystemException(MyBatisSystemException ex) {
-    logger.info("Called handleExceptionError is start.");
+    logger.info("Called handleMyBatisSystemException is start.");
     Map<String, String> errorMap = new HashMap<String, String>();
     errorMap.put("message", "エラーが発生しました。");
     logger.info(ex.getMessage(), ex);
-    logger.info("Called handleExceptionError is end.");
+    logger.info("Called handleMyBatisSystemException is end.");
     return errorMap;
   }
 }
