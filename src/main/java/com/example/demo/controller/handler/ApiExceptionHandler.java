@@ -6,9 +6,11 @@ package com.example.demo.controller.handler;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.mybatis.spring.MyBatisSystemException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,19 +26,36 @@ public class ApiExceptionHandler {
   private static final Logger logger = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
   /**
-   * Exception handling method.
+   * MyBatisSystemException handling method.
    * @param ex
    * @return
    */
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  @ExceptionHandler({ Exception.class})
+  @ExceptionHandler({ MyBatisSystemException.class})
   @ResponseBody
-  public Map<String, String> handleException(Exception ex) {
-    logger.info("Called handleExceptionError is start.");
+  public Map<String, String> handleMyBatisSystemException(MyBatisSystemException ex) {
+    logger.info("Called handleMyBatisSystemException is start.");
     Map<String, String> errorMap = new HashMap<String, String>();
     errorMap.put("message", "エラーが発生しました。");
     logger.info(ex.getMessage(), ex);
-    logger.info("Called handleExceptionError is end.");
+    logger.info("Called handleMyBatisSystemException is end.");
+    return errorMap;
+  }
+
+  /**
+   * HttpMessageNotReadableException handling method.
+   * @param ex
+   * @return
+   */
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+  @ExceptionHandler({ HttpMessageNotReadableException.class})
+  @ResponseBody
+  public Map<String, String> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+    logger.info("Called handleHttpMessageNotReadableException is start.");
+    Map<String, String> errorMap = new HashMap<String, String>();
+    errorMap.put("message", "エラーが発生しました。");
+    logger.info(ex.getMessage(), ex);
+    logger.info("Called handleHttpMessageNotReadableException is end.");
     return errorMap;
   }
 }
