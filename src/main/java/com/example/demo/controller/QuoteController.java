@@ -3,6 +3,8 @@
  */
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Meigen;
 import com.example.demo.repository.MeigenMapper;
+import com.example.demo.service.QuoteService;
 
 /**
  * @author lepra
@@ -20,6 +23,9 @@ import com.example.demo.repository.MeigenMapper;
 @RestController
 public class QuoteController {
   private static final Logger logger = LoggerFactory.getLogger(QuoteController.class);
+
+  @Autowired
+  private QuoteService quoteService;
 
   @Autowired
   private MeigenMapper meigenMapper;
@@ -43,15 +49,15 @@ public class QuoteController {
     }else {
       throw new Exception();
     }
-    meigenMapper.insert(newMeigen);
+    quoteService.setQuote(newMeigen);
     Meigen getMeigen = meigenMapper.select(newMeigen.getId());
     return getMeigen;
   }
 
   @RequestMapping("/meigengets")
-    public Meigen[] meigenGets() {
+    public List<Meigen> meigenGets() {
       logger.info("Called greetingPost.");
-      Meigen[] getMeigen = meigenMapper.selectAll();
+      List<Meigen> getMeigen = quoteService.getQuoteList();
       return getMeigen;
     }
 }
