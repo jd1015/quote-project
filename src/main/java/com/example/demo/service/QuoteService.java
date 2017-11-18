@@ -23,4 +23,10 @@ public interface QuoteService {
    * */
   public List<Meigen> getQuoteList();
 
+  /*
+   * Remove a Quotes
+   * @param id
+   *
+   * */
+  public void removeQuote(int id);
 }
