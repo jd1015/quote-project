@@ -39,4 +39,13 @@ public class QuoteServiceImpl implements QuoteService {
     return Arrays.asList(getMeigen);
   }
 
+  /*
+   * Remove a Quotes
+   * @param id
+   *
+   * */
+  @Override
+  public void removeQuote(int id) {
+    meigenMapper.deleteMeigenById(id);
+  }
 }
