@@ -16,4 +16,5 @@ public interface MeigenMapper {
   void insert(Meigen meigen);
   Meigen select(int id);
   Meigen[] selectAll();
+  void deleteMeigenById(int id);
 }

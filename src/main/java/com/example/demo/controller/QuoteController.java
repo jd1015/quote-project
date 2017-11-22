@@ -60,4 +60,11 @@ public class QuoteController {
       List<Meigen> getMeigen = quoteService.getQuoteList();
       return getMeigen;
     }
+
+  @RequestMapping("/meigendelete")
+  public void meigenDelete(@RequestBody Meigen meigen) {
+    logger.info("Called meigenDelete.");
+    logger.info("id = " + meigen.getId());
+    quoteService.removeQuote(meigen.getId());
+  }
 }

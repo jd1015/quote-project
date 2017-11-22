@@ -12,4 +12,8 @@
     <select id="selectAll" resultType="com.example.demo.model.Meigen">
         SELECT * FROM meigen
     </select>
+    <!-- IDをキーにテーブルを削除する -->
+    <delete id="deleteMeigenById">
+        DELETE FROM MEIGEN WHERE ID = #{id}
+    </delete>
 </mapper>
