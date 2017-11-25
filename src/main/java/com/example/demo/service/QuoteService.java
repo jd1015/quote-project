@@ -28,5 +28,5 @@ public interface QuoteService {
    * @param id
    *
    * */
-  public void removeQuote(int id);
+  public void removeQuote(Integer id);
 }
