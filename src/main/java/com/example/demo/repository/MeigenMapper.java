@@ -14,7 +14,7 @@ import com.example.demo.model.Meigen;
 @Mapper
 public interface MeigenMapper {
   void insert(Meigen meigen);
-  Meigen select(int id);
+  Meigen select(Integer id);
   Meigen[] selectAll();
-  void deleteMeigenById(int id);
+  void deleteMeigenById(Integer id);
 }

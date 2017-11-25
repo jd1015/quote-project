@@ -10,7 +10,7 @@ import java.util.Date;
  *
  */
 public class Meigen {
-  private int id;
+  private Integer id;
   private String title;
   private String name;
   private String quote;
@@ -18,13 +18,13 @@ public class Meigen {
   /**
    * @return id
    */
-  public int getId() {
+  public Integer getId() {
     return id;
   }
   /**
    * @param id セットする id
    */
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
   /**

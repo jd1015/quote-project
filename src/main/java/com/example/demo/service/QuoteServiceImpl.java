@@ -45,7 +45,7 @@ public class QuoteServiceImpl implements QuoteService {
    *
    * */
   @Override
-  public void removeQuote(int id) {
+  public void removeQuote(Integer id) {
     meigenMapper.deleteMeigenById(id);
   }
 }
