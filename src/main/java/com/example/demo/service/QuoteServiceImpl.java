@@ -6,9 +6,12 @@ package com.example.demo.service;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Util;
 import com.example.demo.model.Meigen;
 import com.example.demo.repository.MeigenMapper;
 
@@ -19,6 +22,8 @@ import com.example.demo.repository.MeigenMapper;
 @Service
 public class QuoteServiceImpl implements QuoteService {
 
+  private static final Logger logger = LoggerFactory.getLogger(QuoteServiceImpl.class);
+
   @Autowired
   private MeigenMapper meigenMapper;
 
@@ -27,7 +32,9 @@ public class QuoteServiceImpl implements QuoteService {
    */
   @Override
   public void setQuote(Meigen meigen) {
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
     meigenMapper.insert(meigen);
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
   }
 
   /* (非 Javadoc)
@@ -35,7 +42,9 @@ public class QuoteServiceImpl implements QuoteService {
    */
   @Override
   public List<Meigen> getQuoteList() {
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
     Meigen[] getMeigen = meigenMapper.selectAll();
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
     return Arrays.asList(getMeigen);
   }
 
@@ -46,6 +55,8 @@ public class QuoteServiceImpl implements QuoteService {
    * */
   @Override
   public void removeQuote(Integer id) {
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
     meigenMapper.deleteMeigenById(id);
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
   }
 }

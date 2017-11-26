@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Util;
 import com.example.demo.model.Meigen;
 import com.example.demo.repository.MeigenMapper;
 import com.example.demo.service.QuoteService;
@@ -32,7 +33,7 @@ public class QuoteController {
 
   @RequestMapping("/meigenset")
   public Meigen meigenSet(@RequestBody Meigen meigen) throws Exception {
-    logger.info("Called greetingPost.");
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
     Meigen newMeigen = new Meigen();
     if(meigen.getTitle() != null) {
       newMeigen.setTitle(meigen.getTitle());
@@ -51,20 +52,23 @@ public class QuoteController {
     }
     quoteService.setQuote(newMeigen);
     Meigen getMeigen = meigenMapper.select(newMeigen.getId());
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
     return getMeigen;
   }
 
   @RequestMapping("/meigengets")
     public List<Meigen> meigenGets() {
-      logger.info("Called greetingPost.");
+      logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
       List<Meigen> getMeigen = quoteService.getQuoteList();
+      logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
       return getMeigen;
     }
 
   @RequestMapping("/meigendelete")
   public void meigenDelete(@RequestBody Meigen meigen) {
-    logger.info("Called meigenDelete.");
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
     logger.info("id = " + meigen.getId());
     quoteService.removeQuote(meigen.getId());
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
   }
 }
