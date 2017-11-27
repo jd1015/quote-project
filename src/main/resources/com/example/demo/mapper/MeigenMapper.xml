@@ -16,4 +16,9 @@
     <delete id="deleteMeigenById">
         DELETE FROM MEIGEN WHERE ID = #{id}
     </delete>
+    <!-- IDをキーにデータを複製する -->
+    <insert id="copyById" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO MEIGEN (TITLE, NAME, QUOTE)
+        SELECT TITLE, NAME, QUOTE FROM MEIGEN WHERE ID = #{id}
+    </insert>
 </mapper>

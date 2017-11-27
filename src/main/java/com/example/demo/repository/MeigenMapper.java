@@ -17,4 +17,5 @@ public interface MeigenMapper {
   Meigen select(Integer id);
   Meigen[] selectAll();
   void deleteMeigenById(Integer id);
+  void copyById(Integer id);
 }
