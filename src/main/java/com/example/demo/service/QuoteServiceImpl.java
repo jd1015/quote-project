@@ -67,7 +67,8 @@ public class QuoteServiceImpl implements QuoteService {
    * */
   @Override
   public void copyQuoteById(Integer id) {
-    // TODO 自動生成されたメソッド・スタブ
-
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
+    meigenMapper.deleteMeigenById(id);
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
   }
 }
