@@ -59,4 +59,16 @@ public class QuoteServiceImpl implements QuoteService {
     meigenMapper.deleteMeigenById(id);
     logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
   }
+
+  /*
+   * Copy a Quotes
+   * @param id
+   *
+   * */
+  @Override
+  public void copyQuoteById(Integer id) {
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
+    meigenMapper.copyById(id);
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
+  }
 }

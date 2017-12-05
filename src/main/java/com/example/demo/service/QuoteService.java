@@ -29,4 +29,11 @@ public interface QuoteService {
    *
    * */
   public void removeQuote(Integer id);
+
+  /*
+   * Copy a Quotes
+   * @param id
+   *
+   * */
+  public void copyQuoteById(Integer id);
 }
