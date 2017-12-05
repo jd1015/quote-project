@@ -71,4 +71,13 @@ public class QuoteController {
     quoteService.removeQuote(meigen.getId());
     logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
   }
+
+  @RequestMapping("/meigencopy")
+  public void meigenCopy(@RequestBody Meigen meigen) {
+    // FIXME コピーできなくても200を返却する
+    logger.info("{}.{} start.", Util.getClassName(), Util.getMethodName());
+    logger.info("id = " + meigen.getId());
+    quoteService.copyQuoteById(meigen.getId());
+    logger.info("{}.{} end.", Util.getClassName(), Util.getMethodName());
+  }
 }
