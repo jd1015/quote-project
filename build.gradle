@@ -29,4 +29,5 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.thymeleaf:thymeleaf-spring4:3.0.9.RELEASE")
 }
