@@ -18,6 +18,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <!-- <button>dotinstall</button> -->
     <div id="result"></div>
+    <div id="return"></div>
     <script>
     /*  $(function(){
         $('button').click(function(){
@@ -25,6 +26,17 @@
         });
       });*/
       $( "#result" ).load( "meigengets" );
-    </script>
+      //$( "#return" ).load( "meigengets");
+  $(function() {
+    $.getJSON('meigengets')
+    .done(function(data) {
+      if (data) {
+        $('#return').text(data[0].title);
+      } else {
+          $('#return').text("空です");
+      }
+  });
+});
+</script>
   </body>
 </html>
