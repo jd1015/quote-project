@@ -19,6 +19,7 @@
     <!-- <button>dotinstall</button> -->
     <div id="result"></div>
     <div id="return"></div>
+    <div id="returnX"></div>
     <script>
     /*  $(function(){
         $('button').click(function(){
@@ -31,11 +32,34 @@
     .done(function(data) {
       if (data) {
         $('#return').text(data[0].title);
+        $('#returnX').html(body(data));
       } else {
           $('#return').text("空です");
       }
   });
 });
+  function body(data){// FIXME スマートに解決
+    var tableJQ = '<table class = "table">';
+    tableJQ += '<thead>';
+    tableJQ += '<tr>';
+    tableJQ += '<th scope="col">id</th>';
+    tableJQ += '<th scope="col">title</th>';
+    tableJQ += '<th scope="col">name</th>';
+    tableJQ += '<th scope="col">quote</th>';
+    tableJQ += '</tr>';
+    tableJQ += '</thead>';
+    tableJQ += '<tbody>';
+    for(var i=0;i<data.length;i++){
+      tableJQ +='<tr>';
+      tableJQ +='<th scope="row">' + data[i].id +'</th>';
+      tableJQ +='<td>' + data[i].title +'</td>';
+      tableJQ +='<td>' + data[i].name +'</td>';
+      tableJQ +='<td>' + data[i].quote +'</td>';
+      tableJQ +='</tr>';
+    }
+    tableJQ += '</tbody>';
+    return tableJQ;
+  }
 </script>
   </body>
 </html>
