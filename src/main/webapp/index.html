@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <div id="returnX"></div>
+    <script>
+  $(function() {
+    $.getJSON('meigengets')
+    .done(function(data) {
+      if (data) {
+        $('#returnX').html(body(data));
+      } else {
+          $('#returnX').text("空です");
+      }
+  });
+});
+  function body(data){// FIXME スマートに解決
+    var tableJQ = '<table class="table table-striped table-dark">';
+    tableJQ += '<thead>';
+    tableJQ += '<tr>';
+    tableJQ += '<th scope="col">id</th>';
+    tableJQ += '<th scope="col">title</th>';
+    tableJQ += '<th scope="col">name</th>';
+    tableJQ += '<th scope="col">quote</th>';
+    tableJQ += '</tr>';
+    tableJQ += '</thead>';
+    tableJQ += '<tbody>';
+    for(var i=0;i<data.length;i++){
+      tableJQ +='<tr>';
+      tableJQ +='<th scope="row">' + data[i].id +'</th>';
+      tableJQ +='<td>' + data[i].title +'</td>';
+      tableJQ +='<td>' + data[i].name +'</td>';
+      tableJQ +='<td>' + data[i].quote +'</td>';
+      tableJQ +='</tr>';
+    }
+    tableJQ += '</tbody>';
+    return tableJQ;
+  }
+</script>
+  </body>
+</html>
